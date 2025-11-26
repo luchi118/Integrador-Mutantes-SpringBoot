@@ -12,12 +12,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-@SpringBootTest  // ← Levanta contexto completo de Spring
-@AutoConfigureMockMvc  // ← Simula requests HTTP
+@SpringBootTest
+@AutoConfigureMockMvc
 class MutantControllerTest {
 
     @Autowired
-    private MockMvc mockMvc;  // ← Para hacer requests simulados
+    private MockMvc mockMvc;
 
     @Test
     @DisplayName("POST /mutant debe retornar 200 para mutante")
@@ -27,7 +27,6 @@ class MutantControllerTest {
               "dna": ["ATGCGA","CAGTGC","TTATGT","AGAAGG","CCCCTA","TCACTG"]
             }
             """;
-
         mockMvc.perform(post("/mutant")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(jsonRequest))

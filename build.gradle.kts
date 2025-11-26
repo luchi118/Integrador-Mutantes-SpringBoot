@@ -71,21 +71,4 @@ tasks.jacocoTestReport {
 		xml.required.set(true)
 		html.required.set(true)
 	}
-	doLast {
-		classDirectories.setFrom(
-			files(
-				fileTree(
-				classDirectories.files.map {
-					fileTree(it) {
-						exclude(
-							"**/MutantDetectorApplication.class",
-							"**/config/**",
-							"**/*$*" // Excluir clases internas generadas por Lombok
-							)
-						}
-					}
-				)
-			)
-		)
-	}
 }
